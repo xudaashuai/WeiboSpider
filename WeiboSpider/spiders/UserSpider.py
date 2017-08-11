@@ -29,6 +29,10 @@ class UserSpider(RedisCrawlSpider):
         return self.user_info_url.format(self.token, data_str)
 
     def parse(self, response):
-        user_info_json = json.loads(response.body)
+        user_info_json = None
+        if isinstance(response.body,bytes):
+            user_info_json = response.body.decode('utf-8')
+        else:
+            user_info_json = json.loads(response.body)
         user_info_json['_id'] = user_info_json['id']
         post.update({"_id": user_info_json['_id']}, {"$setOnInsert":user_info_json}, upsert=True)

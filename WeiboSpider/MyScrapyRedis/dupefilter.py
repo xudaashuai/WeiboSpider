@@ -98,7 +98,6 @@ class RFPDupeFilter(BaseDupeFilter):
         fp = self.request_fingerprint(request)
         # This returns the number of values added, zero if already exists.
         added = self.server.sadd(self.key, fp)
-        print(self.key,self.server.smembers(self.key),fp)
 
         return added == 0
 

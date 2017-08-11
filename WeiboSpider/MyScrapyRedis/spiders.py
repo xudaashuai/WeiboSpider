@@ -93,6 +93,8 @@ class RedisMixin(object):
 
         if found:
             self.logger.debug("Read %s requests from '%s'", found, self.redis_key)
+        else:
+            self.logger.info("no more ids, I will stop crawl, I am really tired")
 
     def make_request_from_data(self, data):
         """Returns a Request instance from data coming from Redis.

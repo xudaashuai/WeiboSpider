@@ -102,7 +102,7 @@ DUPEFILTER_CLASS = "WeiboSpider.MyScrapyRedis.dupefilter.RFPDupeFilter"
 #SCHEDULER_QUEUE_CLASS = "scrapy_redis.queue.SpiderStack"
 REDIS_START_URLS_AS_SET = True
 SCHEDULER_FLUSH_ON_START = False
-LOG_LEVEL = 'DEBUG'
+LOG_LEVEL = 'INFO'
 SCHEDULER_DUPEFILTER_KEY = 'u:d'
 REDIS_START_URLS_BATCH_SIZE = 100
 # Introduce an artifical delay to make use of parallelism. to speed up the
