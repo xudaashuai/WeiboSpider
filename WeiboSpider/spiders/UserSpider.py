@@ -23,7 +23,10 @@ class UserSpider(RedisCrawlSpider):
         super().__init__(*a, **kwargs)
 
     def make_request_from_data_str(self, data_str):
-        return Request(url=self.datastr_to_url(data_str), meta={'id': data_str}, dont_filter=False)
+        try:
+            return Request(url=self.datastr_to_url(data_str), meta={'id': int(data_str)}, dont_filter=False)
+        except Exception as e:
+            print(e)
 
     def datastr_to_url(self, data_str):
         return self.user_info_url.format(self.token, data_str)
